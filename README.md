@@ -16,6 +16,38 @@ I tried to answer three key questions:
 
 [A demo notebook is available](./notebooks/connectivity_demo.ipynb) to showcase the capabilities of this research.
 
+## Prerequisites
+
+Make sure you have the following installed:
+
+- Python 3.10
+- `pip` (Python package installer)
+- `virtualenv` (or another env manager, optional but recommended)
+
+## Local Installation
+
+To install this repository as a package locally for development purposes, follow the steps below.
+
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+
+# Create virtual environment
+python3 -m venv venv
+
+# Activate the virtual environment
+source venv/bin/activate
+
+# Install the package in editable mode
+pip install -e .
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Check the installation
+pip list
+```
+
 ## Libraries Used
 
 This project utilizes the following libraries:
