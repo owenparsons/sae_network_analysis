@@ -29,8 +29,9 @@ Make sure you have the following installed:
 To install this repository as a package locally for development purposes, follow the steps below.
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+# Clone the repository to your local machine
+git clone https://github.com/owen-parsons/sae_network_analysis.git
+cd sae_network_analysis
 
 # Create virtual environment
 python3 -m venv venv
