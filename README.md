@@ -14,6 +14,8 @@ I tried to answer three key questions:
 2. How can we leverage feature steering techniques to gain insights into the dependencies between co-occurring features, or alternatively, to understand how they might contribute independently in similar ways?
 3. To what extent can we apply network analysis approaches to assess feature importance and illuminate the relationships between features?
 
+[A demo notebook is available](./notebooks/connectivity_demo.ipynb) to showcase the capabilities of this research.
+
 ## Libraries Used
 
 This project utilizes the following libraries:
@@ -22,8 +24,8 @@ This project utilizes the following libraries:
 
 ## Future Updates
 
-More functionality will be added shortly, and a demo notebook will also be incorporated to showcase the capabilities of this research.
+More functionality will be added shortly.
 
 ## Last Updated
 
-This repository was last updated on **September 30, 2024**.
+This repository was last updated on **October 2, 2024**.
