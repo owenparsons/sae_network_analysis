@@ -95,7 +95,7 @@ def convert_sparse_feature_to_long_df(sparse_tensor: torch.Tensor) -> pd.DataFra
     df_long_nonzero = df_long_nonzero.reset_index().rename(columns={'index': 'position'})
     return df_long_nonzero
 
-def convert_feature_attribution_dict_to_long(attribution_dict):
+def convert_feature_attribution_dict_to_long(attribution_dict, sae):
     """
     Convert a dictionary of feature attributions to a long format pandas DataFrame.
     """
@@ -165,3 +165,62 @@ def merge_dataframes(df_dict, merge_method='union', agg_method='max'):
     merged_df = merged_df.fillna(0.0)
 
     return merged_df
+
+
+def filter_for_cluster_size_threshold(clusters, threshold=5):
+    """
+    Filters clusters based on a minimum size threshold.
+
+    This function takes a dictionary of clusters and returns only the clusters
+    that contain more members than the specified threshold.
+
+    Parameters:
+    ----------
+    clusters : dict
+        A dictionary where keys are cluster identifiers and values are lists of cluster members.
+    threshold : int, optional
+        The minimum number of members a cluster must have to be included in the result (default is 5).
+
+    Returns:
+    -------
+    dict
+        A dictionary containing only the clusters with more than `threshold` members.
+lusters, threshold=3)
+    {'cluster_2': ['c', 'd', 'e', 'f']}
+    """
+    main_clusters = {}
+
+    for cluster in clusters.keys():
+        if len(clusters[cluster]) > threshold:
+
+            features_list = clusters[cluster]
+
+            main_clusters[cluster] = features_list
+
+    return main_clusters
+
+
+def filter_for_specific_clusters(corr_matrix, clusters):
+    """
+    Filters a correlation matrix for a set of specific clusters.
+
+    This function extracts the features from the provided clusters and returns
+    a sub-matrix from the input correlation matrix that contains only the
+    correlation values between these features.
+
+    Parameters:
+    ----------
+    corr_matrix : pandas.DataFrame
+        A correlation matrix where both rows and columns are feature names.
+    clusters : dict
+        A dictionary where keys are cluster identifiers and values are lists of features
+        (members of each cluster).
+
+    Returns:
+    -------
+    pandas.DataFrame
+    A filtered correlation matrix containing only the rows and columns corresponding
+    to the features in the provided clusters.
+    """
+    all_features = [feature for cluster in clusters.keys() for feature in clusters[cluster]]
+    return corr_matrix.loc[all_features, all_features]
